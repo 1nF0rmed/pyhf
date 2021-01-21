@@ -566,6 +566,9 @@ def test_patchset_download(datadir, script_runner, archive):
         "certificate verify failed: Hostname mismatch, certificate is not valid for 'www.fail.org'."
         in ret.stderr
     )
+    assert (
+        "SSLCertificateError" and "hostname 'www.fail.org' doesn't match" in ret.stderr
+    )
 
 
 def test_missing_contrib_extra(caplog):
