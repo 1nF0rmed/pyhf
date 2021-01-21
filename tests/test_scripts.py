@@ -563,10 +563,6 @@ def test_patchset_download(datadir, script_runner, archive):
     ret = script_runner.run(*shlex.split(command))
     assert not ret.success
     assert (
-        "certificate verify failed: Hostname mismatch, certificate is not valid for 'www.fail.org'."
-        in ret.stderr
-    )
-    assert (
         "SSLCertificateError" and "hostname 'www.fail.org' doesn't match" in ret.stderr
     )
 
